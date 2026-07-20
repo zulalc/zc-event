@@ -7,7 +7,7 @@ function Navbar() {
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4">
         <Link
           href="/"
-          className="flex items-center gap-2 text-sm font-semibold tracking-wide"
+          className="flex items-center gap-2 text-sm text-white font-semibold tracking-wide"
         >
           <span className="inline-block h-2 w-2 rounded-full bg-primary" />
           ZC-EVENT
