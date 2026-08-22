@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Field,
   FieldError,
@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { createEventAction } from "@/lib/actions/events";
 import { eventSchema } from "@/lib/schemas/event";
+import Link from "next/link";
 
 type FormValues = z.infer<typeof eventSchema>;
 
@@ -120,9 +121,17 @@ export function EventForm() {
           </p>
         )}
 
-        <Button type="submit" disabled={isPending}>
-          {isPending ? "Creating..." : "Create Event"}
-        </Button>
+        <div className="flex gap-2">
+          <Button type="submit" disabled={isPending}>
+            {isPending ? "Creating..." : "Create Event"}
+          </Button>
+          <Link
+            href="/dashboard"
+            className={buttonVariants({ variant: "outline" })}
+          >
+            Cancel
+          </Link>
+        </div>
       </FieldGroup>
     </form>
   );
