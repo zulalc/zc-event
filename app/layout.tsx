@@ -5,8 +5,9 @@ import { NeonAuthUIProvider } from "@neondatabase/auth/react";
 import { authClient } from "@/lib/auth/client";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
+import { Footer } from "@/components/Footer";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -25,7 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn("font-sans", geist.variable)}
+    >
       <body className={`${montserrat.variable} font-sans`}>
         <NeonAuthUIProvider
           authClient={authClient}
@@ -34,9 +39,10 @@ export default function RootLayout({
           }}
         >
           <Navbar />
-          <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-8">
+          <main className="mx-auto min-h-screen flex w-full max-w-6xl flex-1 flex-col px-4 py-8">
             {children}
           </main>
+          <Footer />
         </NeonAuthUIProvider>
       </body>
     </html>
