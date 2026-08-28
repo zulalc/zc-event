@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { submitRsvpForToken } from "@/lib/actions/events";
+import { submitOrUpdateRsvpForToken } from "@/lib/actions/events";
 
 const rsvpSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -47,7 +47,7 @@ export function RsvpForm({ token }: { token: string }) {
       formData.set("email", values.email);
       formData.set("status", values.status);
 
-      const result = await submitRsvpForToken(formData);
+      const result = await submitOrUpdateRsvpForToken(token, formData);
 
       if (result?.error) {
         form.setError("root", { message: result.error });

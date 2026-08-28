@@ -109,10 +109,10 @@ export async function createInviteLinkAction(
   }
 }
 
-export async function submitRsvpForToken(
+export async function submitOrUpdateRsvpForToken(
+  token: string,
   formData: FormData,
-): Promise<{ error: string } | undefined> {
-  const token = formData.get("token") as string;
+) {
   const parsed = parseRsvp(formData);
 
   if (!parsed.success) {
@@ -157,4 +157,19 @@ export async function submitRsvpForToken(
   });
 
   redirect(`/invite/${token}?submitted=1`);
+}
+
+export async function getRsvpByEventId(eventId: string) {
+  const rsvps = await prisma.eventRsvp.findMany({
+    where: { eventId },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      status: true,
+      respondedAt: true,
+    },
+  });
+
+  return rsvps;
 }
