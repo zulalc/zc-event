@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { getAuthSession } from "@/lib/auth/server";
-import { InviteDetails } from "@/components/InviteDetails";
+import { InviteDetails } from "@/components/invite/InviteDetails";
 
 export default async function InvitePage({
   params,

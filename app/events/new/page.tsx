@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { getAuthSession } from "@/lib/auth/server";
-import { EventForm } from "@/components/EventForm";
+import { EventForm } from "@/components/event/EventForm";
 
 export default async function NewEventPage() {
   const session = await getAuthSession();

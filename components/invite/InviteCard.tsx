@@ -1,7 +1,7 @@
 "use client";
 import { useActionState } from "react";
-import { Card, CardContent, CardHeader } from "./ui/card";
-import { Button } from "./ui/button";
+import { Card, CardContent, CardHeader } from "../ui/card";
+import { Button } from "../ui/button";
 import { createInviteLinkAction } from "@/lib/actions/events";
 import { Copy } from "lucide-react";
 
@@ -41,16 +41,17 @@ export function InviteCard({
             </Button>
           </div>
         ) : (
-          <div className="rounded-md border border-dashed border-(--border) px-3 py-3 text-sm text-(--muted-foreground)">
-            No invite link generated yet.
+          <div className="space-y-3 rounded-md border border-dashed border-(--border) px-3 py-3">
+            <p className="text-sm text-(--muted-foreground)">
+              No invite link generated yet.
+            </p>
+            <form action={formAction}>
+              <Button type="submit" disabled={isPending} size="sm">
+                {isPending ? "Generating..." : "Generate Link"}
+              </Button>
+            </form>
           </div>
         )}
-
-        <form action={formAction} className="flex gap-2">
-          <Button type="submit" disabled={isPending} size="sm">
-            {isPending ? "Generating..." : "Generate Link"}
-          </Button>
-        </form>
 
         {state?.error && (
           <p className="text-sm text-destructive">{state.error}</p>

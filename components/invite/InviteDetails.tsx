@@ -1,8 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Calendar, Check, MapPin } from "lucide-react";
-import { RsvpForm } from "./RsvpForm";
+import { RsvpForm } from "../RsvpForm";
 
 export async function InviteDetails({
   token,

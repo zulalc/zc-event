@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import EventDetails from "@/components/EventDetails";
+import EventDetails from "@/components/event/EventDetails";
 import { getAuthSession } from "@/lib/auth/server";
 
 export default async function EventsPage({
