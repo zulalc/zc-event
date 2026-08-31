@@ -62,7 +62,7 @@ export default async function EventDetails({
   const attendees = await getRsvpByEventId(event.id);
 
   return (
-    <div className="max-w-2xl mx-auto py-6 sm:py-10 px-4">
+    <div className="max-w-2xl mx-auto px-4 min-w-0">
       <BreadCrumbs
         name={event.title}
         color={isPlanner ? "#4ade80" : "#facc15"}
@@ -142,19 +142,17 @@ export default async function EventDetails({
         )}
       </div>
 
-      <div className="mb-4">
-        <InviteCard eventId={event.id} url={inviteUrl} />
-      </div>
+      <InviteCard eventId={event.id} url={inviteUrl} />
 
-      <div>
+      <div className="min-w-0">
         <h2 className="text-sm font-medium text-zinc-500 mb-3">
           Attendees · {event.rsvps.length}
         </h2>
 
         {isPlanner &&
           (attendees.length > 0 ? (
-            <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-x-auto">
-              <Table>
+            <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-x-auto min-w-0">
+              <Table className="w-full">
                 <TableHeader>
                   <TableRow>
                     <TableHead>Name</TableHead>

@@ -17,7 +17,7 @@ export function InviteCard({
     null,
   );
   return (
-    <Card>
+    <Card className="mb-4">
       <CardHeader>Invite Link</CardHeader>
       <CardContent className="space-y-3">
         <p className="text-sm text-(--muted-foreground)">
@@ -26,15 +26,15 @@ export function InviteCard({
         </p>
 
         {url ? (
-          <div className="flex items-center gap-2 rounded-md border border-(--border) bg-surface px-3 py-2">
-            <code className="flex-1 truncate text-sm text-(--foreground)">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 rounded-md border border-(--border) bg-surface px-3 py-2 w-full overflow-hidden">
+            <code className="block w-full min-w-0 break-all overflow-hidden text-sm text-(--foreground)">
               {url}
             </code>
             <Button
               type="button"
               variant="ghost"
               size="icon"
-              className="h-7 w-7 shrink-0 text-(--muted-foreground) hover:text-(--foreground)"
+              className="h-7 w-7 shrink-0 self-end sm:self-auto text-(--muted-foreground) hover:text-(--foreground)"
               onClick={() => navigator.clipboard.writeText(url)}
             >
               <Copy className="h-3.5 w-3.5" />
