@@ -38,11 +38,13 @@ export default function RootLayout({
             providers: ["google", "github"],
           }}
         >
-          <Navbar />
-          <main className="mx-auto min-h-screen flex w-full max-w-6xl flex-1 flex-col px-4 py-8">
-            {children}
-          </main>
-          <Footer />
+          <div className="flex min-h-dvh flex-col">
+            <Navbar />
+            <main className="mx-auto flex w-full min-w-0 max-w-6xl flex-1 flex-col px-4 py-8">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </NeonAuthUIProvider>
       </body>
     </html>
