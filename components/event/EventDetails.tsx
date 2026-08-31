@@ -14,6 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { DeleteEventButton } from "./DeleteEventButton";
 
 type EventDetailsProps = {
   userId: string;
@@ -82,16 +83,7 @@ export default async function EventDetails({
               <Pencil className="size-3.5" />
               Edit
             </Link>
-            <form action={deleteEventAction.bind(null, event.id)}>
-              <Button
-                type="submit"
-                variant="ghost"
-                size="sm"
-                className="cursor-pointer text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950"
-              >
-                Delete
-              </Button>
-            </form>
+            <DeleteEventButton eventId={event.id} />
           </div>
         )}
       </div>
