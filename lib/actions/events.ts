@@ -38,11 +38,53 @@ export async function createEventAction(formData: FormData) {
       title,
       description: description || null,
       location: location || null,
-      date: new Date(eventDate),
+      date: eventDate ? new Date(eventDate) : null,
     },
   });
 
   redirect(`/events/${event.id}`);
+}
+
+export async function editEventAction(eventId: string, formData: FormData) {
+  const session = await getAuthSession();
+  const userId = session.data!.user.id;
+
+  const event = await prisma.event.findUnique({
+    where: { id: eventId },
+  });
+
+  if (!event) {
+    return { error: "Event not found." };
+  }
+
+  if (event.plannerId !== userId) {
+    return { error: "You don't have permission to edit this event." };
+  }
+
+  const parsed = eventSchema.safeParse({
+    title: formData.get("title"),
+    description: formData.get("description"),
+    location: formData.get("location"),
+    eventDate: formData.get("eventDate"),
+  });
+
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0].message };
+  }
+
+  const { title, description, location, eventDate } = parsed.data;
+
+  await prisma.event.update({
+    where: { id: eventId },
+    data: {
+      title,
+      description: description || null,
+      location: location || null,
+      date: eventDate ? new Date(eventDate) : null,
+    },
+  });
+
+  redirect(`/events/${eventId}`);
 }
 
 export async function getEventById(eventId: string) {
