@@ -1,4 +1,5 @@
 import { UserButton } from "@neondatabase/auth/react";
+import Image from "next/image";
 import Link from "next/link";
 
 function Navbar() {
@@ -7,9 +8,15 @@ function Navbar() {
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4">
         <Link
           href="/"
-          className="flex items-center gap-2 text-sm text-white font-semibold tracking-wide"
+          className="flex items-center gap-2 text-sm text-(--foreground) font-semibold tracking-wide"
         >
-          <span className="inline-block h-2 w-2 rounded-full bg-primary" />
+          <Image
+            src="/icon.svg"
+            alt=""
+            width={16}
+            height={16}
+            className="h-4 w-4"
+          />
           ZC-EVENT
         </Link>
         <nav className="flex items-center gap-4">
@@ -19,7 +26,7 @@ function Navbar() {
           >
             Dashboard
           </Link>
-          <UserButton size="icon" />
+          <UserButton size="icon" className="cursor-pointer" />
         </nav>
       </div>
 

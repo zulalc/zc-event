@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -16,9 +17,15 @@ export function Footer() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
         <Link
           href="/"
-          className="flex items-center gap-2 text-sm text-white font-semibold tracking-wide"
+          className="flex items-center gap-2 text-sm font-semibold tracking-wide text-(--foreground)"
         >
-          <span className="inline-block h-2 w-2 rounded-full bg-primary" />
+          <Image
+            src="/icon.svg"
+            alt=""
+            width={16}
+            height={16}
+            className="h-4 w-4"
+          />
           ZC-EVENT
         </Link>
 
@@ -30,7 +37,7 @@ export function Footer() {
             Dashboard
           </Link>
           <a
-            href="mailto:hello@zc-event.app"
+            href="mailto:zulalc.swe@gmail.com"
             className="text-sm text-(--muted-foreground) transition-colors hover:text-(--foreground)"
           >
             Contact
