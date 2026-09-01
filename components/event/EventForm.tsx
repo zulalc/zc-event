@@ -34,7 +34,7 @@ export function EventForm() {
       formData.set("title", values.title);
       formData.set("description", values.description ?? "");
       formData.set("location", values.location ?? "");
-      formData.set("eventDate", values.eventDate);
+      formData.set("eventDate", values.eventDate ?? "");
 
       const result = await createEventAction(formData);
 
@@ -74,6 +74,7 @@ export function EventForm() {
                 {...field}
                 id={field.name}
                 type="date"
+                placeholder="Optional"
                 aria-invalid={fieldState.invalid}
               />
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
