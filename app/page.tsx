@@ -53,17 +53,18 @@ function InviteLinkCard() {
   const going = useCountUp(14);
   const maybe = useCountUp(3);
   const declined = useCountUp(2);
+  const inviteLink = "zc-event/events/rooftop-summer-party";
 
   function handleCopy() {
-    navigator.clipboard?.writeText("zc-event/e/rooftop-summer-party");
+    navigator.clipboard?.writeText(inviteLink);
     setCopied(true);
     setTimeout(() => setCopied(false), 1800);
   }
 
   return (
     <div className="rounded-2xl border border-border bg-card p-5 shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset]">
-      <div className="flex items-center justify-between gap-3 rounded-xl border border-border bg-background/60 px-4 py-3">
-        <div className="flex items-center gap-2.5 min-w-0">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-border bg-background/60 px-4 py-3">
+        <div className="flex items-center gap-2.5 min-w-0 flex-1 basis-full sm:basis-0">
           <Link2 className="size-4 text-primary shrink-0" />
           <span className="font-mono text-sm text-foreground/90 truncate">
             zc-event/events/rooftop-summer-party
@@ -122,7 +123,7 @@ export default function Home() {
       `}</style>
 
       <header className="max-w-6xl mx-auto px-6 pt-10 pb-24 grid md:grid-cols-2 gap-14 items-center">
-        <div>
+        <div className="min-w-0">
           <h1 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.08]">
             Send <span className="accent-serif text-primary">one link.</span>
             <br />
@@ -132,7 +133,7 @@ export default function Home() {
             Create an event, share a single invite link, and see RSVPs land in
             real time. Your guests don't need an account — just the link.
           </p>
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href="/events/new"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground rounded-lg px-5 py-3 text-sm font-medium hover:opacity-90 transition-opacity"
@@ -147,8 +148,9 @@ export default function Home() {
             </a>
           </div>
         </div>
-
-        <InviteLinkCard />
+        <div className="min-w-0">
+          <InviteLinkCard />
+        </div>
       </header>
 
       <section
